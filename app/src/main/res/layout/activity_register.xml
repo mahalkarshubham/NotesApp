@@ -37,7 +37,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_medium"
             android:hint="@string/hint_full_name"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:text="Shubham Mahalkar" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -58,7 +59,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_medium"
             android:hint="@string/hint_email"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:text="shubham@xyz.com" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -79,7 +81,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_medium"
-            android:hint="@string/hint_password" />
+            android:hint="@string/hint_password"
+            android:text="1234abcd" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

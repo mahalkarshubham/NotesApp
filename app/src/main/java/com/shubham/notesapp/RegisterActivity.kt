@@ -8,10 +8,10 @@ import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.shubham.notesapp.databinding.ActivityRegisterBinding
-import com.shubham.notesapp.model.User
 import com.shubham.notesapp.repository.Repository
 
 class RegisterActivity : AppCompatActivity(), View.OnFocusChangeListener {
@@ -34,20 +34,22 @@ class RegisterActivity : AppCompatActivity(), View.OnFocusChangeListener {
         binding.etPassword.transformationMethod = PasswordTransformationMethod()
 
         binding.buttonRegister.setOnClickListener {
-            val registerUserAccount = User(
-                binding.etName.text.toString(),
+
+            viewModel.registerUser(binding.etName.text.toString(),
                 binding.etEmail.text.toString(),
                 binding.etPassword.text.toString()
             )
 
-            viewModel.registerUser(registerUserAccount)
             viewModel.registerUserResponse.observe(this, { response ->
                 if (response.isSuccessful) {
-                    Log.i("response", response.body().toString())
-                    Log.i("response", response.code().toString())
-                    Log.i("response", response.message())
+                    Toast.makeText(this@RegisterActivity,
+                        response.body()?.message.toString(),
+                        Toast.LENGTH_SHORT).show()
                 } else {
-                    Log.i("response", response.errorBody().toString())
+                    Toast.makeText(this@RegisterActivity,
+                        response.body()?.message.toString(),
+                        Toast.LENGTH_SHORT).show()
+                    Log.i("registerResponse", response.errorBody().toString())
                 }
             })
         }
