@@ -39,8 +39,9 @@ class RegisterActivity : AppCompatActivity(), View.OnFocusChangeListener {
                 binding.etEmail.text.toString(),
                 binding.etPassword.text.toString()
             )
+
             viewModel.registerUser(registerUserAccount)
-            viewModel.myResponse.observe(this, { response ->
+            viewModel.registerUserResponse.observe(this, { response ->
                 if (response.isSuccessful) {
                     Log.i("response", response.body().toString())
                     Log.i("response", response.code().toString())
